@@ -94,29 +94,6 @@ class MultiHeadAttention(nn.Module):
         return q, attn
 
 
-class PositionalEncoding(nn.Module):
-    def __init__(self, d_model, pe_tau, max_seq_len=5000):
-        super().__init__()
-
-        # pe: positional encoding matrix
-        pe = torch.zeros(max_seq_len, d_model)
-        position = torch.arange(0, max_seq_len).float().unsqueeze(1)
-        divisor = -torch.exp(
-            torch.arange(0, d_model, 2).float()
-            * math.log(pe_tau) / d_model
-        )
-        pe[:, 0::2] = torch.sin(position * divisor)
-        pe[:, 1::2] = torch.cos(position * divisor)
-        # pe: (max_seq_len, d_model) => (max_seq_len, 1, d_model)
-        pe = pe.unsqueeze(0).permute((1, 0, 2))
-        self.register_buffer("pe", pe)
-
-    def forward(self, x):
-        # (sql_len, batch, d_model) + (sql_len, 1, d_model)
-        # => (sql_len, batch, d_model)
-        return x + self.pe[:x.shape[0], :, :]
-
-
 class Conv1DNet(nn.Module):
     def __init__(self, input_dim, out_dim,T=10,hidden = [64,128,256]):
         super(Conv1DNet, self).__init__()
