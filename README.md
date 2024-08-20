@@ -15,10 +15,9 @@ conda activate py37
 All experiments were executed on a NVIDIA GeForce RTX 3090.
 
 ## Setup Dataset
-The format of the training set refers to `"data/IA_points"`
-
-
-The format of the test set refers to `"data/LA_2019_points"`
+* The format of the training set refers to `"data/IA_points"`.
+* The format of the test set refers to `"data/LA_2019_points"`.
+* Sample data is shown in the CSV files.
 ```
 data/
 └── IA_points/
