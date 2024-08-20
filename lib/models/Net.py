@@ -138,7 +138,7 @@ class ClimateEmbedding(nn.Module):
 
         return x
 
-class CropANet(nn.Module):
+class CACMNet(nn.Module):
 
     def __init__(self,cfg,**kwargs):
         super(CropANet, self).__init__()
@@ -215,6 +215,6 @@ class CropANet(nn.Module):
 
 
 def get_cls_net(config, **kwargs):
-    model = CropANet(config, **kwargs)
+    model = CACMNet(config, **kwargs)
     model.init_weights()
     return model
