@@ -1,0 +1,49 @@
+GPUS: (0,1)
+LOG_DIR: 'log/'
+DATA_DIR: ''
+OUTPUT_DIR: 'output/'
+WORKERS: 8
+PRINT_FREQ: 200
+
+LOSS_CON: 0.1
+MODEL: 
+  NAME:   Net
+  C_DIM: 3
+  CLASS_NAMES: ['other', 'maize', 'cotton', 'rice', 'soybean']
+  NUM_CLASSES: 5
+  T_A: 8
+CUDNN:
+  BENCHMARK: true
+  DETERMINISTIC: false
+  ENABLED: true
+DATASET:
+  DATASET: "CON"
+  TRAIN_DATASET: ['IA' ,'MO','MN','IN','KS',WI]
+  VAL_DATASET: ['IA' ,'MO','MN','IN','KS',WI]
+  TEST_DATASET:  ['LA_2019']
+  ROOT: 'data/IA_points/'
+  VAL_SET: 'val'
+  TEST_SET: 'test'
+  TRAIN_SET: 'train'
+TEST:
+  BATCH_SIZE_PER_GPU: 4096
+  MODEL_FILE: ''
+TRAIN:
+  BATCH_SIZE_PER_GPU: 4096
+  BEGIN_EPOCH: 0
+  END_EPOCH: 100
+  RESUME: false
+  LR_FACTOR: 0.1
+  LR_STEP:
+  - 30
+  - 60
+  - 90
+  OPTIMIZER: sgd
+  LR: 0.005
+  WD: 0.0001
+  MOMENTUM: 0.9
+  NESTEROV: true
+  SHUFFLE: true
+DEBUG:
+  DEBUG: false
+
