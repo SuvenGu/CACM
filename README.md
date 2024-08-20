@@ -3,7 +3,7 @@
 Pytorch implementation of Climate-adaptive Emergency Crop Monitoring in Inaccessible Regions with Satellite Imagery
 
 ## Requirements
-* Python 3.7.7, PyTorch 1.13.1, and more in `requirements.txt`
+* Python 3.7.7, PyTorch 1.13.1, and more in `environment.yml`
 
 ## Setup Environment
 Setup conda environment and activate
